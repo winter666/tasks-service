@@ -4,16 +4,6 @@ namespace App\Modules;
 
 class DB {
 
-    // public function __construct($dbHost, $dbName, $dnUser, $dbPass) {
-    //     try {
-    //         $connection = new \PDO('mysql:host=' . $dbHost . ';dbname=' . $dbName, $dnUser, $dbPass);
-    //     } catch (\PDOException $e) {
-    //         die('Failed to connect on Data Base');
-    //     }
-        
-    //     return $connection;
-    // }
-
     public function connect($dbHost, $dbName, $dnUser, $dbPass) {
         try {
             $connection = new \PDO('mysql:host=' . $dbHost . ';dbname=' . $dbName, $dnUser, $dbPass);

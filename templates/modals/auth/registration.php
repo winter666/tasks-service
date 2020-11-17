@@ -16,4 +16,6 @@
         <label>Confirm Password</label>
         <input type="password" name="confirmation" class="form-control">
     </div>
+    <div class="message-report">
+    </div>
 </form>

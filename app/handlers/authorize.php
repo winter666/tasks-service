@@ -15,4 +15,13 @@ if (!empty($_POST)) {
         $arResponse = $result;
         echo json_encode($arResponse);
     }
+
+    if ($_POST['action'] === 'authorize') {
+        $auth = new Auth();
+        $login = htmlspecialchars($_POST['login']);
+        $password = htmlspecialchars($_POST['password']);
+        $result = $auth->authorize($login, $password);
+        $arResponse = $result;
+        echo json_encode($arResponse);
+    }
 }

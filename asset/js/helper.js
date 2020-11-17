@@ -10,10 +10,10 @@ const helpers = {
             dataType: 'json',
             success: function(data) {
                 if (data.result) {
-                    $('#modalBody').html(`<div class="alert alert-success">${data.message}</div>`);
-                    // setTimeout(function(){
-                    //     $('#modalBody').html('');
-                    // }, 1000 * 3);
+                    $('#modalBody').html(helpers.alertTemplate(data.message, 'success'));
+                    
+                } else {
+                    form.find('.message-report').html(helpers.alertTemplate(data.message, 'danger'));
                 }
             },
             error: function (error) {
@@ -23,5 +23,10 @@ const helpers = {
 
         return false;
     },
+
+    alertTemplate(message, alertStatus = 'primary') {
+        let template = `<div class="alert alert-${alertStatus}">${message}</div>`;
+        return template;
+    }
 
 }

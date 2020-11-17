@@ -5,8 +5,16 @@ namespace App\Modules;
 class User extends DB {
 
     public function getUsers() {
-        $users = $this->getList('SELECT login, password FROM users');
+        $users = $this->getList('SELECT id, login, password FROM users');
         return $users;
+    }
+
+    public function getById($user_id) {
+        GLOBAL $DB;
+        $prepare = $DB->prepare('SELECT * FROM users WHERE id=:id');
+        $prepare->bindValue(':id', $user_id);
+        $res = $prepare->execute();
+        return $res;
     }
 
     public static function new ($user) {

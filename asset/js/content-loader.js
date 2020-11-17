@@ -40,6 +40,7 @@ const loaders = {
             dataType: 'json',
             success: function(data) {
                 if (data.result) {
+                    $('#exampleModalLabel').html(data.title);
                     $('#modalBody').html(data.html);
 
                     let form = $('#modalBody').find('.form');

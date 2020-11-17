@@ -12,6 +12,7 @@ if (!empty($_GET['type'])) {
         $html = ob_get_clean();
         $arResponse['html'] = $html;
         $arResponse['result'] = true;
+        $arResponse['title'] = 'Registration';
     }
 
     if ($_GET['type'] === 'authorize') {
@@ -20,6 +21,7 @@ if (!empty($_GET['type'])) {
         $html = ob_get_clean();
         $arResponse['html'] = $html;
         $arResponse['result'] = true;
+        $arResponse['title'] = 'Authorization';
     }
 
     echo json_encode($arResponse);

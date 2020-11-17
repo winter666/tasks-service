@@ -4,6 +4,10 @@ namespace App\Modules;
 
 class User extends DB {
 
+    private const ROLE_ADMIN = 1;
+    private const ROLE_WORKER = 2;
+    private const ROLE_USER = 3;
+
     public function getUsers() {
         $users = $this->getList('SELECT id, login, password FROM users');
         return $users;

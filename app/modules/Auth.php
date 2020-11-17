@@ -11,13 +11,17 @@ use App\Modules\Session;
 
 class Auth {
 
-    public function authorize($login, $password) {
-        $requiries = Validator::make([
-            'login' => $login, 
-            'password' => $password, 
-        ]);
+    public function authorize($login, $password, $validated = false) {
+        $requiries['result'] = true;
 
-        if ($requiries) {
+        if (!$validated) {
+            $requiries = Validator::make([
+                'login' => $login, 
+                'password' => $password, 
+            ]);
+        }
+
+        if ($requiries['result']) {
             $user = new User();
 
             $users = $user->getUsers();
@@ -40,6 +44,7 @@ class Auth {
         return $requiries;
     }
 
+
     public function register($name, $login, $password, $confPass, $role = 1) {
 
         $requiries = Validator::make([
@@ -57,16 +62,26 @@ class Auth {
                     'password' => $password,
                     'role' => $role,
                 ]);
-                return $answer = ($result) ? ['result' => true, 'message' => 'You are register!'] : ['result' => false, 'message' => 'This email has been registred on another account'];
+                return $this->authorize($login, $password, true);
+                // return $answer = ($result) ? ['result' => true, 'message' => 'You are register!'] : ['result' => false, 'message' => 'This email has been registred on another account'];
             }
             return ['result' => false, 'message' => 'Invalid confirmation password'];
         }
         return $requiries;
     }
 
+    
+    public static function logout() {
+        $result = Session::delete('auth');
+        $message = ($result) ? 'You are log out' : 'Error';
+        return ['result' => $result, 'message' => $message]; 
+    }
+
+
     private function confirmationPassword($pass, $conf) {
         return ($pass == $conf);
     }
+
 
     public static function isAuth() {
 

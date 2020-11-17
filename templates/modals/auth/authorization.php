@@ -8,4 +8,6 @@
         <label>Password</label>
         <input type="password" name="password" class="form-control">
     </div>
+    <div class="message-report">
+    </div>
 </form>

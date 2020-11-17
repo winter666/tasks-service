@@ -1,32 +1,67 @@
 const helpers = {
 
-    sendModal (evt) {
+    sendAuth (evt) {
         let form = $(evt.currentTarget);
-        console.log(form);
+
+        function successCallBack(data) {
+            if (data.result) {
+                $('#modalBody').html(helpers.alertTemplate(data.message, 'success'));
+                if (data.html) {
+                    $('#headerBtns').html(data.html);
+                    loaders.initBtnsHeader();
+                }
+                
+            } else {
+                form.find('.message-report').html(helpers.alertTemplate(data.message, 'danger'));
+            }
+        }
+        function errorCallBack(error) {
+            console.log(error);
+        }
+
+        helpers.sendPOST(form, successCallBack, errorCallBack)
+
+        return false;
+    },
+
+    sendPOST(form, success, error) {
         $.ajax({
             method: 'POST',
             url: form.attr('action'),
             data: form.serialize(),
             dataType: 'json',
-            success: function(data) {
-                if (data.result) {
-                    $('#modalBody').html(helpers.alertTemplate(data.message, 'success'));
-                    
-                } else {
-                    form.find('.message-report').html(helpers.alertTemplate(data.message, 'danger'));
-                }
-            },
-            error: function (error) {
-                console.log(error);
-            }
+            success: success,
+            error: error
         });
-
-        return false;
     },
 
     alertTemplate(message, alertStatus = 'primary') {
         let template = `<div class="alert alert-${alertStatus}">${message}</div>`;
         return template;
-    }
+    },
+
+    logoutReq(evt) { 
+        let form = $(evt.currentTarget);
+        if (confirm('Are you sure?')) {
+            function successCallBack (data) {
+                if (data.result) {
+                    if (data.html) {
+                        $('#headerBtns').html(data.html);
+                        loaders.initBtnsHeader();
+                    }
+                } else {
+                    let button = form.find('button');
+                    button.attr('class', 'btn btn-danger');
+                    button.text(data.message);
+                }
+            }
+            function errorCallBack (error) {
+                console.log(error);
+            }
+
+            helpers.sendPOST(form, successCallBack, errorCallBack)
+        }
+        return false;
+    },
 
 }

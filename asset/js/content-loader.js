@@ -41,9 +41,9 @@ const loaders = {
             success: function(data) {
                 if (data.result) {
                     $('#modalBody').html(data.html);
-                    
-                    let form = $('.form');
-                    form.submit(helpers.sendModal);
+
+                    let form = $('#modalBody').find('.form');
+                    form.submit(helpers.sendAuth);
 
                     $('.modal-save').on('click', function() {
                         form.submit();
@@ -57,15 +57,10 @@ const loaders = {
                 console.log(error);
             }
         });
+    },
+    
+    initBtnsHeader () {
+        $('.modal-loader').on('click',loaders.loadToModal);
+        $('#logout').on('submit', helpers.logoutReq);
     }
 }
-
-
-$(document).ready(function() {
-
-    loaders.pageLoader();
-    
-    $('.modal-loader').on('click',loaders.loadToModal);
-   
-
-});

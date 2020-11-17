@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL);
+// error_reporting(E_ALL);
 session_start();
 include($_SERVER['DOCUMENT_ROOT'] . '/app/helpers/system.php');
 

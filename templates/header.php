@@ -11,17 +11,9 @@
     <header>
         <div class="container">
             <h1><?= APP_NAME ?></h1>
-            <?php if (!auth()): ?>
-                <div class="btn-panel">
-                    <button class="btn btn-primary modal-loader" data-toggle="modal" data-target="#exampleModal" data-form="authorize">
-                        Login
-                    </button>
-                    <button class="btn btn-primary modal-loader" data-toggle="modal" data-target="#exampleModal" data-form="register">
-                        Register
-                    </button>
-                </div>
-            <?php endif; ?>
-            <?php preDebug($_SESSION); ?>
+            <div class="btn-panel" id="headerBtns">
+                <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/general_components/header-buttons.php'); ?>
+            </div>
         </div>
     </header>
     <main>

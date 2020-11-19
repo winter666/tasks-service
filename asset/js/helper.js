@@ -9,6 +9,7 @@ const helpers = {
                 if (data.html) {
                     $('#headerBtns').html(data.html);
                     loaders.initBtnsHeader();
+                    loaders.pageLoader();
                 }
                 
             } else {
@@ -48,6 +49,7 @@ const helpers = {
                     if (data.html) {
                         $('#headerBtns').html(data.html);
                         loaders.initBtnsHeader();
+                        loaders.pageLoader();
                     }
                 } else {
                     let button = form.find('button');

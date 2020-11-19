@@ -42,11 +42,12 @@ const loaders = {
                 if (data.result) {
                     $('#exampleModalLabel').html(data.title);
                     $('#modalBody').html(data.html);
+                    $('#modalSave').html(data.button_text);
 
                     let form = $('#modalBody').find('.form');
                     form.submit(helpers.sendAuth);
 
-                    $('.modal-save').on('click', function() {
+                    $('#modalSave').on('click', function() {
                         form.submit();
                     });
 

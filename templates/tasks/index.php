@@ -7,9 +7,9 @@
                         Current: <span>(count)</span>
                     </button>
                 </h5>
-                </div>
+            </div>
 
-                <div id="collapseOne" class="collapse show" aria-labelledby="currentTasks" data-parent="#accordion">
+            <div id="collapseOne" class="collapse show" aria-labelledby="currentTasks" data-parent="#accordion">
                 <div class="card-body">
                     <div class="card">
                         <div class="card-body">
@@ -35,9 +35,9 @@
                         Completed: <span>(count)</span>
                     </button>
                 </h5>
-                </div>
+            </div>
 
-                <div id="collapsTwo" class="collapse" aria-labelledby="comletedTasks" data-parent="#accordion">
+            <div id="collapsTwo" class="collapse" aria-labelledby="comletedTasks" data-parent="#accordion">
                 <div class="card-body">
                     <div class="card">
                         <div class="card-body">
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>    
         </div>
         <div class="card failedTasks">
             <div class="card-header" id="failedTasks">
@@ -63,9 +63,9 @@
                         Failed: <span>(count)</span>
                     </button>
                 </h5>
-                </div>
+            </div>
 
-                <div id="collapseTree" class="collapse" aria-labelledby="failedTasks" data-parent="#accordion">
+            <div id="collapseTree" class="collapse" aria-labelledby="failedTasks" data-parent="#accordion">
                 <div class="card-body">
                     <div class="card">
                         <div class="card-body">
@@ -82,7 +82,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>    
         </div>
     </div>
 </div>

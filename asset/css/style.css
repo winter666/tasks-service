@@ -1,3 +1,51 @@
+body {
+    background-color: #f8f9fa;
+}
+
 header {
+    background-color: #ffffff;
     margin-bottom: 20px;
+    padding: 8px 20px;
+    /* min-height: 10rem; */
+}
+
+header .title {
+    margin-left: 10px;
+}
+
+.btn-panel {
+    display: flex;
+    justify-content: center;
+}
+header .btn-panel button {
+    margin: 5px 7px;
+}
+.managment {
+    background-color: #ffffff;
+    padding: 8px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.managment .tab-content {
+    font-size: 1.3em;
+}
+.managment .tab-content h3 {
+    font-size: 1.5em;
+}
+
+.managment .tab-image {
+    width: 400px;
+}
+.managment .tab-image img {
+    width: 100%;
+}
+.managment .get-started {
+    padding: 15px;
+}
+
+.ta-rigth {
+    text-align: right;
+}
+.ta-left {
+    text-align: left;
 }

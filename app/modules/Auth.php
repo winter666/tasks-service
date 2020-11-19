@@ -31,11 +31,11 @@ class Auth {
                     $verified = password_verify($password, $user['password']);
                 }    
             }
-
-            $sessionUser = ['id' => $user['id'], 'login' => $user['login']];
-
-            Session::set('auth', $sessionUser);
-
+            if ($verified) {
+                $sessionUser = ['id' => $user['id'], 'login' => $user['login']];
+                Session::set('auth', $sessionUser);
+            }
+            
             $answer['result'] = $verified;
             $answer['message'] = ($verified) ? 'You are logged in!' : 'Invalid Email or Password'; 
             return $answer;

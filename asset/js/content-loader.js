@@ -21,6 +21,7 @@ const loaders = {
                 let content = $('#content');
                 if (data.status === 200 && data.result === true) {
                     content.html(data.html);
+                    $('#scrollToBtns').click(helpers.scrollToElement);
                 }
             },
             error: function (error) {

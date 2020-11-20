@@ -71,9 +71,7 @@
     </div>
     <div class="managment">
         <div class="get-started btn-panel">
-            <a href="#headerBtns">
-                <button class="btn btn-success">Get started</button>
-            </a>
+            <button class="btn btn-success" id="scrollToBtns" data-for="#headerBtns">Get started</button>
         </div>
     </div>
 </div>

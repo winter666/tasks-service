@@ -50,6 +50,7 @@ const helpers = {
                         $('#headerBtns').html(data.html);
                         loaders.initBtnsHeader();
                         loaders.pageLoader();
+                        $('#scrollToBtns').click(helpers.scrollToElement());
                     }
                 } else {
                     let button = form.find('button');
@@ -65,5 +66,13 @@ const helpers = {
         }
         return false;
     },
+
+    scrollToElement(evt) {
+        let btn = $(evt.currentTarget);
+        console.log(btn);
+        $('html, body').animate({
+            scrollTop: $(btn.attr('data-for')).offset().top  // класс объекта к которому приезжаем
+        }, 1000); // Скорость прокрутки
+    }
 
 }

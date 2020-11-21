@@ -3,6 +3,7 @@
 require($_SERVER['DOCUMENT_ROOT'] . '/app/config/config.php');
 require($_SERVER['DOCUMENT_ROOT'] . '/app/modules/DB.php');
 require($_SERVER['DOCUMENT_ROOT'] . '/app/modules/Auth.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/app/modules/Tasks.php');
 require($_SERVER['DOCUMENT_ROOT'] . '/app/helpers/site.php');
 
 use App\Modules\DB;

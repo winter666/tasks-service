@@ -11,6 +11,10 @@ use App\Modules\Session;
 
 class Auth {
 
+    private const ROLE_ADMIN = 1;
+    private const ROLE_WORKER = 2;
+    private const ROLE_USER = 3;
+
     public function authorize($login, $password, $validated = false) {
         $requiries['result'] = true;
 
@@ -32,7 +36,7 @@ class Auth {
                 }    
             }
             if ($verified) {
-                $sessionUser = ['id' => $user['id'], 'login' => $user['login']];
+                $sessionUser = ['id' => $user['id'], 'login' => $user['login'], 'role' => $user['role']];
                 Session::set('auth', $sessionUser);
             }
             
@@ -95,4 +99,19 @@ class Auth {
 
         return false;
     }
+
+    public static function isAdmin() {
+        $sessionUser = Session::get('auth');
+
+        if (!empty($sessionUser)) {
+            if ($session['role'] === $thus.ROLE_ADMIN) {
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+    
 }

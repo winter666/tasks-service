@@ -50,7 +50,7 @@ const helpers = {
                         $('#headerBtns').html(data.html);
                         loaders.initBtnsHeader();
                         loaders.pageLoader();
-                        $('#scrollToBtns').click(helpers.scrollToElement());
+                        $('#scrollToBtns').click(helpers.scrollToElement);
                     }
                 } else {
                     let button = form.find('button');

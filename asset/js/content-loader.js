@@ -44,6 +44,7 @@ const loaders = {
                     $('#exampleModalLabel').html(data.title);
                     $('#modalBody').html(data.html);
                     $('#modalSave').html(data.button_text);
+                    $('#modalSave').show();
 
                     let form = $('#modalBody').find('.form');
                     form.submit(helpers.sendAuth);

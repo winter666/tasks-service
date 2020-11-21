@@ -6,6 +6,7 @@ const helpers = {
         function successCallBack(data) {
             if (data.result) {
                 $('#modalBody').html(helpers.alertTemplate(data.message, 'success'));
+                $('#modalSave').hide();
                 if (data.html) {
                     $('#headerBtns').html(data.html);
                     loaders.initBtnsHeader();

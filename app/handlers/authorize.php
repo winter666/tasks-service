@@ -30,5 +30,5 @@ if (!empty($_POST)) {
 
     $url = '/templates/general_components/header-buttons.php';
     $response = new Response;
-    echo $response->answer($result, $url);
+    echo $response->answer($result, ['url' => $url]);
 }

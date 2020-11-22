@@ -1,17 +1,16 @@
 const helpers = {
 
-    sendAuth (evt) {
+    sendModal (evt) {
         let form = $(evt.currentTarget);
 
         function successCallBack(data) {
             if (data.result) {
                 $('#modalBody').html(helpers.alertTemplate(data.message, 'success'));
-                $('#modalSave').hide();
+                $('#modalAction').hide();
                 if (data.html) {
                     $('#headerBtns').html(data.html);
-                    loaders.initBtnsHeader();
-                    loaders.pageLoader();
                 }
+                loaders.pageLoader();
                 
             } else {
                 form.find('.message-report').html(helpers.alertTemplate(data.message, 'danger'));
@@ -47,10 +46,9 @@ const helpers = {
         if (confirm('Are you sure?')) {
             function successCallBack (data) {
                 if (data.result) {
+                    loaders.pageLoader();
                     if (data.html) {
                         $('#headerBtns').html(data.html);
-                        loaders.initBtnsHeader();
-                        loaders.pageLoader();
                         $('#scrollToBtns').click(helpers.scrollToElement);
                     }
                 } else {
@@ -70,7 +68,6 @@ const helpers = {
 
     scrollToElement(evt) {
         let btn = $(evt.currentTarget);
-        console.log(btn);
         $('html, body').animate({
             scrollTop: $(btn.attr('data-for')).offset().top  // класс объекта к которому приезжаем
         }, 1000); // Скорость прокрутки

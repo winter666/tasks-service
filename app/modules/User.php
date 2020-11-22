@@ -10,6 +10,11 @@ class User extends DB {
         return $users;
     }
 
+    public function getUserList() {
+        $users = $this->getList('SELECT * FROM users');
+        return $users;
+    }
+
     public function getById($user_id) {
         GLOBAL $DB;
         $prepare = $DB->prepare('SELECT * FROM users WHERE id=:id');

@@ -49,3 +49,6 @@ header .btn-panel button {
 .ta-left {
     text-align: left;
 }
+.btn_panel.tasks-control {
+    margin: 20px 0;
+}

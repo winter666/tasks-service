@@ -1,6 +1,7 @@
 const loaders = {
-    pageLoader() {
 
+    pageLoader() {
+        console.log(1234);
         let urlSearch = new URLSearchParams(window.location);
         let page = urlSearch.get('page');
     
@@ -22,6 +23,7 @@ const loaders = {
                 if (data.status === 200 && data.result === true) {
                     content.html(data.html);
                     $('#scrollToBtns').click(helpers.scrollToElement);
+                    loaders.initBtnsHeader();
                 }
             },
             error: function (error) {
@@ -43,13 +45,13 @@ const loaders = {
                 if (data.result) {
                     $('#exampleModalLabel').html(data.title);
                     $('#modalBody').html(data.html);
-                    $('#modalSave').html(data.button_text);
-                    $('#modalSave').show();
+                    $('#modalAction').html(data.button_text);
+                    $('#modalAction').show();
 
                     let form = $('#modalBody').find('.form');
-                    form.submit(helpers.sendAuth);
+                    form.submit(helpers.sendModal);
 
-                    $('#modalSave').on('click', function() {
+                    $('#modalAction').on('click', function() {
                         form.submit();
                     });
 

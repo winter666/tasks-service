@@ -17,6 +17,8 @@ if (!empty($_GET['page'])) {
             $CompleteTasks = $tasks->getTasksListByUserId($user['id'], $tasks->getCompleteStatus());
             $failedTasks = $tasks->getTasksListByUserId($user['id'], $tasks->getFailedtatus());
 
+            $assignedTasks = $tasks->getTasksListByAssignerId($user['id']);
+
             ob_start();
             include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/index.php');
             $html = ob_get_clean();

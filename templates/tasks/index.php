@@ -57,7 +57,7 @@
                             <tr>
                                 <td><?= $task['user_name'] ?> (<?= $task['user_id'] ?>)</td>
                                 <td><?= $task['task_name'] ?></td>
-                                <td><?= $task['status'] ?></td>
+                                <td><?= getMaskByStatus($task['status']) ?></td>
                                 <td><a href="/?page=task&show=<?= $task['task_id'] ?>">Show</a></td>
                             </tr>
                         <?php endforeach; ?>

@@ -21,8 +21,6 @@ const loaders = {
                 let content = $('#content');
                 if (data.status === 200 && data.result === true) {
                     content.html(data.html);
-                    $('#scrollToBtns').click(helpers.scrollToElement);
-                    loaders.initBtnsHeader();
 
                     // if (message) {
                         // let messageContainer = $('#collapseOne').find('.message-report');
@@ -74,8 +72,4 @@ const loaders = {
         });
     },
     
-    initBtnsHeader () {
-        $('.modal-loader').on('click',loaders.loadToModal);
-        $('#logout').on('submit', helpers.logoutReq);
-    }
 }

@@ -118,6 +118,18 @@ const helpers = {
 
     clearBlock(block) {
         block.html('');
+    },
+
+    setBgOfDayTime() {
+        let d = new Date();
+        let hour = d.getHours();
+        let nightTheme = {'background-color': '#3F3F3F', 'color': '#fff'};
+        if (d > 20 || d == 0 || d < 6) {
+            $('header').css(nightTheme);
+            $('body').css(nightTheme);
+            $('header').css(nightTheme);
+            $('footer').css(nightTheme);
+        } 
     }
 
 }

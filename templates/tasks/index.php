@@ -16,26 +16,16 @@
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="myTasks" role="tabpanel" aria-labelledby="myTasks-tab">
-            <div id="accordion">
-                <div class="card current">
 
-                    <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/components/collapse-current.php'); ?>  
+            <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/components/tabs/my-tasks.php'); ?>
 
-                </div>       
-                <div class="card comleted">
-
-                    <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/components/collapse-complete.php'); ?>  
-
-                </div>
-                <div class="card failedTasks">
-
-                    <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/components/collapse-failed.php'); ?>
-                    
-                </div>
-            </div>
         </div>
 
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">2</div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            
+            <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/components/tabs/profile.php'); ?>
+
+        </div>
 
         <?php if (admin()) : ?>
             <div class="tab-pane fade" id="tasksTracking" role="tabpanel" aria-labelledby="tasksTracking-tab">
@@ -44,59 +34,7 @@
                     <button class="btn btn-primary modal-loader" data-toggle="modal" data-target="#exampleModal" data-form="create_task">Assign a task</button>
                 </div>
                 <div id="tableAssignTasks">
-                    <table class="table">
-                        <thead class="thead-dark ta-center">
-                            <tr class="ta-center">
-                                <th>User name</th>
-                                <th>Task</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="ta-center">
-                            <?php foreach ($assignedTasks as $task): ?>
-                                <tr>
-                                    <td><?= $task['user_name'] ?> (<?= $task['user_id'] ?>)</td>
-                                    <td><?= $task['task_name'] ?></td>
-                                    <td><?= getMaskByStatus($task['status']) ?></td>
-                                    <td>
-                                        <div class="d-flex flex-wrap justify-content-center">
-
-                                            <div class="mr-4">
-                                                <a class="btn btn-info" href="/?page=task&show=<?= $task['task_id'] ?>">Show</a>
-                                            </div>
-
-                                            <div class="mr-4">
-                                                <form method="POST" action="/app/handlers/taskHandler.php" class="pass_work need_prove">
-                                                    <input type="hidden" name="task_id" value="<?= $task['task_id'] ?>">
-                                                    <input type="hidden" name="action" value="pass_tasks">
-                                                    <div class="input-group">
-                                                        <select class="form-control" name="status">
-                                                            <option value="completed">Completed</option>
-                                                            <option value="current">Current</option>
-                                                            <option value="failed">Failed</option>
-                                                        </select>
-                                                        <div class="input-group-append">
-                                                            <button class="btn btn-primary">Make</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-
-                                            <div>
-                                                <form method="POST" action="/app/handlers/taskHandler.php" class="pass_work need_prove">
-                                                    <input type="hidden" name="task_id" value="<?= $task['task_id'] ?>">
-                                                    <input type="hidden" name="action" value="delete">
-                                                    <input type="submit" value="Delete" class="btn btn-danger">
-                                                </form>
-                                            </div>
-                                            
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                    <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/components/tasks-track/table-assign.php'); ?>
                 </div>
             </div>
         <?php endif; ?>    

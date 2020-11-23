@@ -4,6 +4,7 @@ body {
 
 header {
     background-color: #ffffff;
+    color: #3f3f3f;
     margin-bottom: 20px;
     padding: 8px 20px;
     /* min-height: 10rem; */
@@ -22,6 +23,7 @@ header .btn-panel button {
 }
 .managment {
     background-color: #ffffff;
+    color: #3f3f3f;
     padding: 8px;
     margin-bottom: 15px;
     width: 100%;

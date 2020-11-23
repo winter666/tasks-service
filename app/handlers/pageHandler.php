@@ -14,10 +14,11 @@ if (!empty($_GET['page'])) {
             $user = user();
             $status = $tasks->getCurrentStatus();
             $currentTasks = $tasks->getTasksListByUserId($user['id'], $tasks->getCurrentStatus());
-            $CompleteTasks = $tasks->getTasksListByUserId($user['id'], $tasks->getCompleteStatus());
+            $completeTasks = $tasks->getTasksListByUserId($user['id'], $tasks->getCompleteStatus());
             $failedTasks = $tasks->getTasksListByUserId($user['id'], $tasks->getFailedtatus());
-
-            $assignedTasks = $tasks->getTasksListByAssignerId($user['id']);
+            if (admin()) {
+                $assignedTasks = $tasks->getTasksListByAssignerId($user['id']);
+            }
 
             ob_start();
             include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/index.php');

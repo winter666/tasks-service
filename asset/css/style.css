@@ -52,3 +52,7 @@ header .btn-panel button {
 .btn_panel.tasks-control {
     margin: 20px 0;
 }
+
+.task {
+    margin-bottom: 25px;
+}

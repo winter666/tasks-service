@@ -8,7 +8,8 @@ function auth() {
 }
 
 function admin() {
-    return Auth::isAdmin();
+    $auth = new Auth();
+    return $auth->isAdmin();
 }
 
 function user() {

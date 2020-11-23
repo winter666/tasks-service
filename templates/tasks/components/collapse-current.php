@@ -10,7 +10,7 @@
     <div class="card-body">
         <?php if (!empty($currentTasks)): ?>
             <?php foreach($currentTasks as $task): ?>
-                <div class="card">
+                <div class="card task">
                     <div class="card-body">
                         <h5 class="card-title"><?= $task['name'] ?></h5>
                         <h6 class="card-subtitle mb-2 text-muted">Status: <span class="badge badge-primary"><?= $task['status'] ?></span></h6>

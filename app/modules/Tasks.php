@@ -14,7 +14,7 @@ class Tasks extends DB {
     public function getTasksListByUserId($userId, $status) {
         if (Auth::isAuth()) {
             GLOBAL $DB;
-            $prepare = $DB->prepare('SELECT * FROM tasks WHERE user_id = :user_id AND status = :status');
+            $prepare = $DB->prepare('SELECT * FROM tasks WHERE user_id = :user_id AND status = :status ORDER BY id DESC');
             $prepare->bindValue(':user_id', $userId);
             $prepare->bindValue(':status', $status);
             $prepare->execute();
@@ -28,17 +28,17 @@ class Tasks extends DB {
         if (Auth::isAuth()) {
             GLOBAL $DB;
             $prepare = $DB
-                ->prepare('SELECT 
-                tasks.id as task_id,
-                tasks.name as task_name, 
-                tasks.user_id, 
-                tasks.description, 
-                tasks.assigner_id, 
-                tasks.status, 
-                users.id, 
-                users.name as user_name 
-                FROM tasks WHERE task.assigner_id = :assigner_id 
-                LEFT JOIN tasks ON tasks.user_id = users.id');
+                ->prepare('SELECT
+                    tasks.name as task_name, 
+                    tasks.user_id, 
+                    tasks.description as description, 
+                    tasks.assigner_id, 
+                    tasks.status as status, 
+                    users.id, 
+                    users.name as user_name
+                FROM tasks 
+                LEFT JOIN users ON tasks.user_id = users.id
+                WHERE tasks.assigner_id = :assigner_id ');
             $prepare->bindValue(':assigner_id', $assignerId);
             $prepare->execute();
             $res = $prepare->fetchAll();

@@ -6,19 +6,16 @@ class Response {
 
     public function answer($data, $optional = []) {
         if (!empty($data)) {
-            $arResponse['result'] = $data['result'];
-            $arResponse['message'] = $data['message'];
-            $html = '';
 
+            $html = '';
             if (isset($optional['url'])) {
                 ob_start();
-                include($_SERVER['DOCUMENT_ROOT'] . $optional['url']);
+                require($_SERVER['DOCUMENT_ROOT'] . $optional['url']);
                 $html = ob_get_clean();
             }
-            $arResponse['html'] = $html;
-
+            $arResponse = array_merge($data, $optional);
             if (!empty($optional)) {
-                $arResponse = array_merge($data, $optional);
+                $arResponse['html'] = $html;
             }
 
             return $this->toJSON($arResponse);

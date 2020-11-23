@@ -11,9 +11,9 @@ use App\Modules\Session;
 
 class Auth {
 
-    private const ROLE_ADMIN = 1;
-    private const ROLE_WORKER = 2;
-    private const ROLE_USER = 3;
+    private $ROLE_ADMIN = 1;
+    private $ROLE_WORKER = 2;
+    private $ROLE_USER = 3;
 
     public function authorize($login, $password, $validated = false) {
         $requiries['result'] = true;
@@ -29,14 +29,16 @@ class Auth {
             $user = new User();
 
             $users = $user->getUsers();
-            
+            $role = 3;
             foreach ($users as $user) {
                 if ($user['login'] === $login) {
                     $verified = password_verify($password, $user['password']);
+                    $role = ($verified) ? $user['role'] : $role;
+                    $user_id = $user['id'];
                 }    
             }
             if ($verified) {
-                $sessionUser = ['id' => $user['id'], 'login' => $user['login'], 'role' => $user['role']];
+                $sessionUser = ['id' => $user_id, 'login' => $login, 'role' => $role];
                 Session::set('auth', $sessionUser);
             }
             
@@ -64,10 +66,9 @@ class Auth {
                     'name' => $name,
                     'login' => $login,
                     'password' => $password,
-                    'role' => $role,
+                    'role' => $this->ROLE_WORKER,
                 ]);
-                return $this->authorize($login, $password, true);
-                // return $answer = ($result) ? ['result' => true, 'message' => 'You are register!'] : ['result' => false, 'message' => 'This email has been registred on another account'];
+                return ($result) ? $this->authorize($login, $password, true) : ['result' => false, 'message' => 'This email has been registred on another account'];
             }
             return ['result' => false, 'message' => 'Invalid confirmation password'];
         }
@@ -100,13 +101,11 @@ class Auth {
         return false;
     }
 
-    public static function isAdmin() {
+    public function isAdmin() {
         $sessionUser = Session::get('auth');
 
         if (!empty($sessionUser)) {
-            if ($session['role'] === $thus.ROLE_ADMIN) {
-                return true;
-            }
+            return ($sessionUser['role'] == $this->ROLE_ADMIN);
         }
 
         return false;

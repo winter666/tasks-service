@@ -1,7 +1,6 @@
 const loaders = {
 
     pageLoader() {
-        console.log(1234);
         let urlSearch = new URLSearchParams(window.location);
         let page = urlSearch.get('page');
     

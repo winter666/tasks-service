@@ -63,7 +63,7 @@ header .btn-panel button {
 .task {
     margin-bottom: 25px;
 }
-.modal {
+.modal, .tab-content {
     color: #3f3f3f;
 }
 .tab-content, .tasks-control {

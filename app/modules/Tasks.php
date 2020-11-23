@@ -8,7 +8,7 @@ use App\Modules\Auth;
 class Tasks extends DB {
 
     private $CURRENT_STATUS = 'current';
-    private $COMPLETE_STATUS = 'complete';
+    private $COMPLETE_STATUS = 'completed';
     private $FAILED_STATUS = 'failed';
 
     public function getTasksListByUserId($userId, $status) {
@@ -29,6 +29,7 @@ class Tasks extends DB {
             GLOBAL $DB;
             $prepare = $DB
                 ->prepare('SELECT
+                    tasks.id as task_id,
                     tasks.name as task_name, 
                     tasks.user_id, 
                     tasks.description as description, 
@@ -38,7 +39,8 @@ class Tasks extends DB {
                     users.name as user_name
                 FROM tasks 
                 LEFT JOIN users ON tasks.user_id = users.id
-                WHERE tasks.assigner_id = :assigner_id ');
+                WHERE tasks.assigner_id = :assigner_id 
+                ORDER BY tasks.id DESC');
             $prepare->bindValue(':assigner_id', $assignerId);
             $prepare->execute();
             $res = $prepare->fetchAll();

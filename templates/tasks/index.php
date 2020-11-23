@@ -82,7 +82,7 @@
                                                     </div>
                                                 </form>
                                             </div>
-                                            
+
                                             <div>
                                                 <form method="POST" action="/app/handlers/taskHandler.php" class="pass_work need_prove">
                                                     <input type="hidden" name="task_id" value="<?= $task['task_id'] ?>">
@@ -90,6 +90,7 @@
                                                     <input type="submit" value="Delete" class="btn btn-danger">
                                                 </form>
                                             </div>
+                                            
                                         </div>
                                     </td>
                                 </tr>

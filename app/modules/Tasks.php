@@ -120,6 +120,29 @@ class Tasks extends DB {
         return $res;
     }
 
+    public function deleteTask($taskId) {
+        $requires = Validator::make([
+            'task_id' => $taskId,
+        ]);
+
+        if ($requires['result']) {
+            $res = $this->delete($taskId);
+            return ['result' => $res, 'message' => ($res) ? 'Success' : 'Error'];
+        }
+
+        return $requiries;
+    }
+
+    public function delete($id) {
+        GLOBAL $DB;
+
+        $prepare = $DB->prepare('DELETE FROM tasks WHERE id = :id');
+        $prepare->bindValue(':id', $id);
+        $res = $prepare->execute();
+
+        return $res;
+    }
+
     public function getCurrentStatus() {
         return $this->CURRENT_STATUS;
     }

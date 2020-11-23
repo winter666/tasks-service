@@ -10,6 +10,7 @@ use App\Modules\Tasks;
 if (!empty($_POST) && auth()) {
 
     $task = new Tasks;
+    $result = ['result' => false, 'message' => "Something's bad"];
 
     if ($_POST['action'] === 'create') {
         $name = htmlspecialchars(trim($_POST['name']));
@@ -23,6 +24,11 @@ if (!empty($_POST) && auth()) {
         $taskId = $_POST['task_id'];
         $status = (isset($_POST['status']) && admin()) ? $_POST['status'] : $task->getCheckStatus(); 
         $result = $task->toggleStatus($taskId, $status);
+    }
+
+    if ($_POST['action'] === 'delete' && admin()) {
+        $taskId = $_POST['task_id'];
+        $result = $task->deleteTask($taskId);
     }
 
     $response = new Response;

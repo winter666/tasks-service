@@ -3,3 +3,4 @@ DB_NAME=task_board;
 DB_USER=root;
 DB_PASSWORD=root;
 DB_HOST=localhost;
+API_URL=http://test-api/handler.php;

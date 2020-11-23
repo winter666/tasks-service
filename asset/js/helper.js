@@ -71,6 +71,24 @@ const helpers = {
         $('html, body').animate({
             scrollTop: $(btn.attr('data-for')).offset().top  // класс объекта к которому приезжаем
         }, 1000); // Скорость прокрутки
+    },
+
+    sendPOSTApiClickBtn (event) {
+        let button = $(event.currentTarget);
+        $.ajax({
+            url: button.attr('data-api-url'),
+            method: 'POST',
+            data: {
+                test: true,
+            },
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
     }
 
 }

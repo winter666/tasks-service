@@ -24,14 +24,14 @@ const loaders = {
                     $('#scrollToBtns').click(helpers.scrollToElement);
                     loaders.initBtnsHeader();
 
-                    if (message) {
-                        let messageContainer = $('#collapseOne').find('.message-report');
-                        messageContainer.html(helpers.alertTemplate(message, 'success'));
+                    // if (message) {
+                        // let messageContainer = $('#collapseOne').find('.message-report');
+                        // messageContainer.html(helpers.alertTemplate(message, 'success'));
 
-                        setTimeout(function() {
-                            helpers.clearBlock(messageContainer)
-                        }, 4 * 1000);
-                    }
+                        // setTimeout(function() {
+                        //     helpers.clearBlock(messageContainer)
+                        // }, 4 * 1000);
+                    // }
 
                 }
             },

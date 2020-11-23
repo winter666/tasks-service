@@ -103,7 +103,7 @@ class Tasks extends DB {
 
         if ($requiries['result']) {
             $res = $this->updateStatus($taskId, $status);
-            return ['result' => $res, 'message' => ($res) ? 'Task added to check' : 'Error: Cant added task to check'];
+            return ['result' => $res, 'message' => ($res) ? 'Success: Task status is ' . $status  : 'Error: Cannot change status of task'];
         }
 
         return $requires;

@@ -10,7 +10,7 @@
         </li>
         <?php if (admin()) : ?>
             <li class="nav-item">
-                <a class="nav-link" id="checkWork-tab" data-toggle="tab" href="#checkWork" role="tab" aria-controls="checkWork" aria-selected="false">Check work</a>
+                <a class="nav-link" id="tasksTracking-tab" data-toggle="tab" href="#tasksTracking" role="tab" aria-controls="tasksTracking" aria-selected="false">Task Tracking</a>
             </li>
         <?php endif; ?>
     </ul>
@@ -38,31 +38,65 @@
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">2</div>
 
         <?php if (admin()) : ?>
-            <div class="tab-pane fade" id="checkWork" role="tabpanel" aria-labelledby="checkWork-tab">
+            <div class="tab-pane fade" id="tasksTracking" role="tabpanel" aria-labelledby="tasksTracking-tab">
 
                 <div class="btn_panel tasks-control">
                     <button class="btn btn-primary modal-loader" data-toggle="modal" data-target="#exampleModal" data-form="create_task">Assign a task</button>
                 </div>
-                <table class="table table-responsive">
-                    <thead>
-                        <tr>
-                            <th>User name</th>
-                            <th>Task</th>
-                            <th>Status</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($assignedTasks as $task): ?>
-                            <tr>
-                                <td><?= $task['user_name'] ?> (<?= $task['user_id'] ?>)</td>
-                                <td><?= $task['task_name'] ?></td>
-                                <td><?= getMaskByStatus($task['status']) ?></td>
-                                <td><a href="/?page=task&show=<?= $task['task_id'] ?>">Show</a></td>
+                <div id="tableAssignTasks">
+                    <table class="table">
+                        <thead class="thead-dark ta-center">
+                            <tr class="ta-center">
+                                <th>User name</th>
+                                <th>Task</th>
+                                <th>Status</th>
+                                <th>Actions</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody class="ta-center">
+                            <?php foreach ($assignedTasks as $task): ?>
+                                <tr>
+                                    <td><?= $task['user_name'] ?> (<?= $task['user_id'] ?>)</td>
+                                    <td><?= $task['task_name'] ?></td>
+                                    <td><?= getMaskByStatus($task['status']) ?></td>
+                                    <td>
+                                        <div class="d-flex flex-wrap justify-content-center">
+
+                                            <div class="mr-4">
+                                                <a class="btn btn-info" href="/?page=task&show=<?= $task['task_id'] ?>">Show</a>
+                                            </div>
+
+                                            <div class="mr-4">
+                                                <form method="POST" action="/app/handlers/taskHandler.php" class="pass_work need_prove">
+                                                    <input type="hidden" name="task_id" value="<?= $task['task_id'] ?>">
+                                                    <input type="hidden" name="action" value="pass_tasks">
+                                                    <div class="input-group">
+                                                        <select class="form-control" name="status">
+                                                            <option value="completed">Completed</option>
+                                                            <option value="current">Current</option>
+                                                            <option value="failed">Failed</option>
+                                                        </select>
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-primary">Make</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            
+                                            <div>
+                                                <form method="POST" action="/app/handlers/taskHandler.php" class="pass_work need_prove">
+                                                    <input type="hidden" name="task_id" value="<?= $task['task_id'] ?>">
+                                                    <input type="hidden" name="action" value="delete">
+                                                    <input type="submit" value="Delete" class="btn btn-danger">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         <?php endif; ?>    
 

@@ -21,9 +21,8 @@ if (!empty($_POST) && auth()) {
 
     if ($_POST['action'] === 'pass_tasks') {
         $taskId = $_POST['task_id'];
-        // $user = user();
-        // $userId = $user['id'];
-        $result = $task->toggleStatus($taskId, $task->getCheckStatus());
+        $status = (isset($_POST['status']) && admin()) ? $_POST['status'] : $task->getCheckStatus(); 
+        $result = $task->toggleStatus($taskId, $status);
     }
 
     $response = new Response;

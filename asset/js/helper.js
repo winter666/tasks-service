@@ -93,29 +93,28 @@ const helpers = {
 
     passWork(event) {
         let form = $(event.currentTarget);
+        let conf = true;
+        if (form.hasClass('need_prove')) {
+            conf = confirm('Are you sure?');
+        }
+        if (conf) {
+            function success(data) {
+                if (data.result) {
+                    loaders.pageLoader(data.message);
 
-        function success(data) {
-            if (data.result) {
-                loaders.pageLoader(data.message);
-
-            } else {
-                let messageContainer = form.find('.message-report');
-                console.log(messageContainer);
-                messageContainer.html(helpers.alertTemplate(data.message, 'danger'));
+                } else {
+                    let messageContainer = form.find('.message-report');
+                    console.log(messageContainer);
+                    messageContainer.html(helpers.alertTemplate(data.message, 'danger'));
+                }
             }
+            function error (error) {
+                console.log(error);
+            }
+            helpers.sendPOST(form, success, error);
         }
-        function error (error) {
-            console.log(error);
-        }
-        helpers.sendPOST(form, success, error);
         return false;
     },
-
-    // commandTimer(second, callback) {
-    //     setTimeout(function() {
-    //         callback
-    //     }, second * 1000);
-    // },
 
     clearBlock(block) {
         block.html('');

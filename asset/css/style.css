@@ -57,8 +57,15 @@ header .btn-panel button {
 
 .btn_panel.tasks-control {
     margin: 20px 0;
+    padding: 5px 8px;
 }
 
 .task {
     margin-bottom: 25px;
+}
+.modal {
+    color: #3f3f3f;
+}
+.tab-content, .tasks-control {
+    background-color: #ffffff;
 }

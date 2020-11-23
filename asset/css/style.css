@@ -6,7 +6,7 @@ header {
     background-color: #ffffff;
     color: #3f3f3f;
     margin-bottom: 20px;
-    padding: 8px 20px;
+    padding: 10px 25px;
     /* min-height: 10rem; */
 }
 
@@ -68,4 +68,9 @@ header .btn-panel button {
 }
 .tab-content, .tasks-control {
     background-color: #ffffff;
+}
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }

@@ -9,9 +9,11 @@
 </head>
 <body>
     <header>
-        <h1 class="title"><?= APP_NAME ?></h1>
-        <div class="btn-panel" id="headerBtns">
-            <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/general_components/header-buttons.php'); ?>
+        <div class="header-flex">
+            <h1 class="title"><?= APP_NAME ?></h1>
+            <div class="btn-panel" id="headerBtns">
+                <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/general_components/header-buttons.php'); ?>
+            </div>
         </div>
     </header>
     <main>

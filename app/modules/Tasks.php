@@ -4,12 +4,14 @@ namespace App\Modules;
 
 
 use App\Modules\Auth;
+use App\Modules\Validator;
 
 class Tasks extends DB {
 
     private $CURRENT_STATUS = 'current';
     private $COMPLETE_STATUS = 'completed';
     private $FAILED_STATUS = 'failed';
+    private $NEED_CHECK = 'need check';
 
     public function getTasksListByUserId($userId, $status) {
         if (Auth::isAuth()) {
@@ -93,6 +95,31 @@ class Tasks extends DB {
         return ['result' => false, 'message' => 'Unauthorized'];
     }
 
+    public function toggleStatus($taskId, $status) {
+        $requiries = Validator::make([
+            'task_id' => $taskId,
+            'status' => $status
+        ]);
+
+        if ($requiries['result']) {
+            $res = $this->updateStatus($taskId, $status);
+            return ['result' => $res, 'message' => ($res) ? 'Task added to check' : 'Error: Cant added task to check'];
+        }
+
+        return $requires;
+    }
+
+    public function updateStatus($taskId, $status) {
+        GLOBAL $DB;
+
+        $prepare = $DB->prepare('UPDATE tasks SET status = :status WHERE id = :id');
+        $prepare->bindValue(':status', $status);
+        $prepare->bindValue(':id', $taskId);
+        $res = $prepare->execute();
+
+        return $res;
+    }
+
     public function getCurrentStatus() {
         return $this->CURRENT_STATUS;
     }
@@ -103,6 +130,10 @@ class Tasks extends DB {
 
     public function getFailedtatus() {
         return $this->FAILED_STATUS;
+    }
+
+    public function getCheckStatus() {
+        return $this->NEED_CHECK;
     }
 
 }

@@ -8,6 +8,7 @@
 
 <div id="collapseOne" class="collapse show" aria-labelledby="currentTasks" data-parent="#accordion">
     <div class="card-body">
+        <div class="message-report"></div>
         <?php if (!empty($currentTasks)): ?>
             <?php foreach($currentTasks as $task): ?>
                 <div class="card task">
@@ -19,9 +20,11 @@
                         </p>
                     </div>
                     <div class="card-footer">
-                        <form method="POST" action="/app/handlers/taskHandler.php" id="passCheckWork">
+                        <form method="POST" action="/app/handlers/taskHandler.php" class="pass_work">
                             <input type="hidden" name="task_id" value="<?= $task['id'] ?>">
-                            <input type="success" class="btn btn-primary btn-sm" value="Pass for check">
+                            <input type="hidden" name="action" value="pass_tasks">
+                            <input type="submit" class="btn btn-primary btn-sm" value="Pass for check">
+                            <div class="message-report"></div>
                         </form>
                     </div>
                 </div>

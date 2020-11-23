@@ -20,6 +20,8 @@ function getMaskByStatus($status) {
             return '<span class="badge badge-success">' . $status . '</span>';
         case 'failed':
             return '<span class="badge badge-danger">' . $status . '</span>';
+        case 'need check':
+            return '<span class="badge badge-warning">' . $status . '</span>';    
     }
     return  $status;
 }

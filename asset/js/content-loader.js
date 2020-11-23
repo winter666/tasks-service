@@ -1,6 +1,6 @@
 const loaders = {
 
-    pageLoader() {
+    pageLoader(message = '') {
         let urlSearch = new URLSearchParams(window.location);
         let page = urlSearch.get('page');
     
@@ -23,6 +23,16 @@ const loaders = {
                     content.html(data.html);
                     $('#scrollToBtns').click(helpers.scrollToElement);
                     loaders.initBtnsHeader();
+
+                    if (message) {
+                        let messageContainer = $('#collapseOne').find('.message-report');
+                        messageContainer.html(helpers.alertTemplate(message, 'success'));
+
+                        setTimeout(function() {
+                            helpers.clearBlock(messageContainer)
+                        }, 4 * 1000);
+                    }
+
                 }
             },
             error: function (error) {

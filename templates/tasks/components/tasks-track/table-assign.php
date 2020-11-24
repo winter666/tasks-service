@@ -3,6 +3,7 @@
         <tr class="ta-center">
             <th>User name</th>
             <th>Task</th>
+            <th>Description</th>
             <th>Status</th>
             <th>Actions</th>
         </tr>
@@ -12,6 +13,7 @@
             <tr>
                 <td><?= $task['user_name'] ?> (<?= $task['user_id'] ?>)</td>
                 <td><?= $task['task_name'] ?></td>
+                <td><textarea class="form-control" readonly><?= $task['description'] ?></textarea></td>
                 <td><?= getMaskByStatus($task['status']) ?></td>
                 <td>
                     <div class="d-flex flex-wrap justify-content-center">

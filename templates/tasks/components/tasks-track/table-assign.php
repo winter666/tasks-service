@@ -8,9 +8,9 @@
             <th>Actions</th>
         </tr>
     </thead>
-    <tbody class="ta-center">
+    <tbody class="ta-center filter-area" data-filter="status" data-element-format="table">
         <?php foreach ($assignedTasks as $task): ?>
-            <tr>
+            <tr data-status="<?= $task['status'] ?>">
                 <td><?= $task['user_name'] ?> (<?= $task['user_id'] ?>)</td>
                 <td><?= $task['task_name'] ?></td>
                 <td><textarea class="form-control" readonly><?= $task['description'] ?></textarea></td>

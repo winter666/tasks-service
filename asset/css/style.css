@@ -56,8 +56,8 @@ header .btn-panel button {
 }
 
 .btn_panel.tasks-control {
-    margin: 20px 0;
-    padding: 5px 8px;
+    margin-bottom: 20px;
+    padding: 10px 10px;
 }
 
 .task {
@@ -73,4 +73,21 @@ header .btn-panel button {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+.tab-profile {
+    padding: 15px 10px;
+    min-height: 20rem;
+}
+
+.profile-img {
+    background-color: #3f3f3f;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    border-radius: 100%;
+    width: 215px;
+}
+
+.profile-img img {
+    max-height: 220px;
 }

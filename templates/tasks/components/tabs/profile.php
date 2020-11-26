@@ -8,16 +8,18 @@
             </div>
         </div>
         <div class="col-lg-8 col-md-7 col-sm-12">
-            <h3 id="profileHeading">Profile</h3>
-            <form method="POST" id="profileSetting">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="name" value="Name" disabled>
-                </div>
-                <div class="form-group">
-                    <input type="mail" class="form-control" name="login" value="example@mail.com" disabled>
-                </div>
-            </form>
-            <button class="btn btn-primary">Edit</button>
+            <div class="profile-editable">
+                <h3 id="profileHeading">Profile</h3>
+                <form method="POST" id="profileSetting">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" value="<?= $data['user']['name'] ?>" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input type="mail" class="form-control" name="login" value="<?= $data['user']['login'] ?>" disabled>
+                    </div>
+                </form>
+                <button class="btn btn-primary">Edit</button>
+            </div>
         </div>
     </div>
 </div>

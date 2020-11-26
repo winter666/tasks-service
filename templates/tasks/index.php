@@ -21,9 +21,9 @@
                 'tasks', 
                 'tabs.my-tasks', 
                 [
-                    'currentTasks' => $currentTasks, 
-                    'completeTasks' => $completeTasks, 
-                    'failedTasks' => $failedTasks,
+                    'currentTasks' => $data['currentTasks'], 
+                    'completeTasks' => $data['completeTasks'], 
+                    'failedTasks' => $data['failedTasks'],
                 ]
             ); ?>
 
@@ -31,7 +31,7 @@
 
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             
-            <?php component('tasks', 'tabs.profile'); ?>
+            <?php component('tasks', 'tabs.profile', ['user' => $data['user']]); ?>
 
         </div>
 
@@ -49,7 +49,7 @@
                     <?php component(
                         'tasks', 
                         'tasks-track.table-assign', 
-                        ['assignedTasks' => $assignedTasks]
+                        ['assignedTasks' => $data['assignedTasks']]
                     ); ?>
                 </div>
             </div>

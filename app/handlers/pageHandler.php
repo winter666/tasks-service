@@ -11,17 +11,19 @@ if (!empty($_GET['page'])) {
         if (auth()) {
 
             $tasks = new Tasks;
+            $data = [];
             $user = user();
             $status = $tasks->getCurrentStatus();
-            $currentTasks = $tasks->getTasksListByUserId($user['id'], $tasks->getCurrentStatus());
-            $completeTasks = $tasks->getTasksListByUserId($user['id'], $tasks->getCompleteStatus());
-            $failedTasks = $tasks->getTasksListByUserId($user['id'], $tasks->getFailedtatus());
+            $data['currentTasks'] = $tasks->getTasksListByUserId($user['id'], $tasks->getCurrentStatus());
+            $data['completeTasks'] = $tasks->getTasksListByUserId($user['id'], $tasks->getCompleteStatus());
+            $data['failedTasks'] = $tasks->getTasksListByUserId($user['id'], $tasks->getFailedtatus());
             if (admin()) {
-                $assignedTasks = $tasks->getTasksListByAssignerId($user['id']);
+                $data['assignedTasks'] = $tasks->getTasksListByAssignerId($user['id']);
             }
+            $data['user'] = $user;
 
             ob_start();
-            include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/index.php');
+            getTemplate('tasks', $data);
             $html = ob_get_clean();
         } else {
             ob_start();

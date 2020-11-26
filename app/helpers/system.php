@@ -66,3 +66,17 @@ function component(string $template, string $component_name, array $data = []) :
     }
     return false;
 }
+
+
+function getTemplate(string $name, $data = [], $optionalName = '') {
+    $file = ( $optionalName) ? $optionalName : 'index';
+    $path = '/templates/' . preg_replace('/\./', '/', $name) . '/' . $file . '.php';
+
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . $path)) {
+        include($_SERVER['DOCUMENT_ROOT'] . $path);
+        return true;
+    }
+    return false;
+
+}
+

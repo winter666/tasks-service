@@ -9,7 +9,7 @@ if (!empty($_GET['type'])) {
 
     if ($_GET['type'] === 'register') {
         ob_start();
-        include($_SERVER['DOCUMENT_ROOT'] . '/templates/modals/auth/registration.php');
+        getTemplate('modals.auth', [], 'registration');
         $html = ob_get_clean();
         $arResponse['html'] = $html;
         $arResponse['result'] = true;
@@ -19,7 +19,7 @@ if (!empty($_GET['type'])) {
 
     if ($_GET['type'] === 'authorize') {
         ob_start();
-        include($_SERVER['DOCUMENT_ROOT'] . '/templates/modals/auth/authorization.php');
+        getTemplate('modals.auth', [], 'authorization');
         $html = ob_get_clean();
         $arResponse['html'] = $html;
         $arResponse['result'] = true;
@@ -31,7 +31,7 @@ if (!empty($_GET['type'])) {
         $u = new User;
         $users = $u->getUserList();
         ob_start();
-        include($_SERVER['DOCUMENT_ROOT'] . '/templates/modals/tasks/create.php');
+        getTemplate('modals.tasks', ['users' => $users], 'create');
         $html = ob_get_clean();
         $arResponse['html'] = $html;
         $arResponse['result'] = true;

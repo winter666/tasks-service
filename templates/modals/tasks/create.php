@@ -8,7 +8,7 @@
     </div>
     <div class="form-group">
         <select class="form-control" name="user_id">
-            <?php foreach($users as $user): ?>
+            <?php foreach($data['users'] as $user): ?>
                 <option value="<?= $user['id'] ?>"><?= $user['name'] ?></option>
             <?php endforeach; ?>
         </select>

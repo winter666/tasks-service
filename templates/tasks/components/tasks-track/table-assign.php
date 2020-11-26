@@ -28,9 +28,15 @@
                                 <input type="hidden" name="action" value="pass_tasks">
                                 <div class="input-group">
                                     <select class="form-control" name="status">
-                                        <option value="completed">Completed</option>
-                                        <option value="current">Current</option>
-                                        <option value="failed">Failed</option>
+                                        <option value="completed" <?= ($task['status'] == 'completed') ? 'selected' : '' ?>>
+                                            Completed
+                                        </option>
+                                        <option value="current" <?= ($task['status'] == 'current') ? 'selected' : '' ?>>
+                                            Current
+                                        </option>
+                                        <option value="failed" <?= ($task['status'] == 'failed') ? 'selected' : '' ?>>
+                                            Failed
+                                        </option>
                                     </select>
                                     <div class="input-group-append">
                                         <button class="btn btn-primary">Make</button>

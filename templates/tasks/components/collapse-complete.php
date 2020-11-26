@@ -1,15 +1,15 @@
 <div class="card-header" id="comletedTasks">
     <h5 class="mb-0">
         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsTwo" aria-expanded="true" aria-controls="collapsTwo">
-            Completed: <span>(<?= ($completeTasks) ? count($completeTasks) : 0 ?>)</span>
+            Completed: <span>(<?= ($data) ? count($data) : 0 ?>)</span>
         </button>
     </h5>
 </div>
 
 <div id="collapsTwo" class="collapse" aria-labelledby="comletedTasks" data-parent="#accordion">
     <div class="card-body">
-        <?php if (!empty($completeTasks)): ?>
-            <?php foreach($completeTasks as $task): ?>
+        <?php if (!empty($data)): ?>
+            <?php foreach($data as $task): ?>
                 <div class="card task">
                     <div class="card-body">
                         <h5 class="card-title"><?= $task['name'] ?></h5>
@@ -26,7 +26,7 @@
                 </div>
             <?php endforeach; ?> 
         <?php else: ?>
-            <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/components/task-empty.php'); ?>    
+            <?php component('tasks', 'task-empty'); ?>   
         <?php endif; ?>
     </div>
 </div>

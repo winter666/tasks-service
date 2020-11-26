@@ -17,13 +17,21 @@
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="myTasks" role="tabpanel" aria-labelledby="myTasks-tab">
 
-            <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/components/tabs/my-tasks.php'); ?>
+            <?php component(
+                'tasks', 
+                'tabs.my-tasks', 
+                [
+                    'currentTasks' => $currentTasks, 
+                    'completeTasks' => $completeTasks, 
+                    'failedTasks' => $failedTasks,
+                ]
+            ); ?>
 
         </div>
 
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             
-            <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/components/tabs/profile.php'); ?>
+            <?php component('tasks', 'tabs.profile'); ?>
 
         </div>
 
@@ -34,11 +42,15 @@
                     <div class="form-group">
                         <button class="btn btn-primary modal-loader" data-toggle="modal" data-target="#exampleModal" data-form="create_task">Assign a task</button>
                     </div>
-                    <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/components/filter.php'); ?> 
+                    <?php component('tasks', 'filter'); ?>
                 </div>   
 
                 <div id="tableAssignTasks">
-                    <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/components/tasks-track/table-assign.php'); ?>
+                    <?php component(
+                        'tasks', 
+                        'tasks-track.table-assign', 
+                        ['assignedTasks' => $assignedTasks]
+                    ); ?>
                 </div>
             </div>
         <?php endif; ?>    

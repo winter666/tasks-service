@@ -9,7 +9,7 @@
         </tr>
     </thead>
     <tbody class="ta-center filter-area" data-filter="status" data-element-format="table">
-        <?php foreach ($assignedTasks as $task): ?>
+        <?php foreach ($data['assignedTasks'] as $task): ?>
             <tr data-status="<?= $task['status'] ?>">
                 <td><?= $task['user_name'] ?> (<?= $task['user_id'] ?>)</td>
                 <td><?= $task['task_name'] ?></td>

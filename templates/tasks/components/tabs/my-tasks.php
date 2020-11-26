@@ -2,17 +2,17 @@
 <div id="accordion">
     <div class="card current">
 
-        <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/components/collapse-current.php'); ?>  
+        <?php component('tasks', 'collapse-current', $data['currentTasks']); ?>
 
     </div>       
     <div class="card comleted">
 
-        <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/components/collapse-complete.php'); ?>  
+        <?php component('tasks', 'collapse-complete', $data['completeTasks']); ?>  
 
     </div>
     <div class="card failedTasks">
 
-        <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/components/collapse-failed.php'); ?>
+        <?php component('tasks', 'collapse-failed', $data['failedTasks']); ?>
         
     </div>
 </div>

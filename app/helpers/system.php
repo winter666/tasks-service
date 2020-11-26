@@ -55,3 +55,14 @@ function config($key, $value = null) {
         setActualConf($arrConfig);
     }
 }
+
+function component(string $template, string $component_name, array $data = []) : bool {
+
+    $path = '/templates/' . $template . '/components/' . preg_replace('/\./', '/', $component_name) . '.php'; 
+
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . $path)) {
+        include($_SERVER['DOCUMENT_ROOT'] . $path);
+        return true;
+    }
+    return false;
+}

@@ -1,7 +1,7 @@
 <div class="card-header" id="currentTasks">
     <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Current: <span>(<?= ($currentTasks) ? count($currentTasks) : 0 ?>)</span>
+            Current: <span>(<?= ($data) ? count($data) : 0 ?>)</span>
         </button>
     </h5>
 </div>
@@ -9,8 +9,8 @@
 <div id="collapseOne" class="collapse show" aria-labelledby="currentTasks" data-parent="#accordion">
     <div class="card-body">
         <div class="message-report"></div>
-        <?php if (!empty($currentTasks)): ?>
-            <?php foreach($currentTasks as $task): ?>
+        <?php if (!empty($data)): ?>
+            <?php foreach($data as $task): ?>
                 <div class="card task">
                     <div class="card-body">
                         <h5 class="card-title"><?= $task['name'] ?></h5>
@@ -30,7 +30,7 @@
                 </div>
             <?php endforeach; ?> 
         <?php else: ?>
-            <?php include($_SERVER['DOCUMENT_ROOT'] . '/templates/tasks/components/task-empty.php'); ?> 
+            <?php component('tasks', 'task-empty'); ?>
         <?php endif; ?>
     </div>
 </div> 

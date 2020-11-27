@@ -160,6 +160,7 @@ const helpers = {
         $(saveButton).text('Save');
 
         editBlock.append(saveButton);
+        button.prop('disabled', true);
     },
 
     resetChanges() {

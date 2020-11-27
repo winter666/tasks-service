@@ -18,7 +18,7 @@
                         <input type="mail" class="form-control" name="login" value="<?= $data['user']['login'] ?>" disabled>
                     </div>
                 </form>
-                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-primary" id="editProfile">Edit</button>
             </div>
         </div>
     </div>

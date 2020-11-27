@@ -129,6 +129,44 @@ const helpers = {
             $('header').css(nightTheme);
             $('footer').css(nightTheme);
         } 
+    },
+
+    agent() {
+        setInterval(() => helpers.setBgOfDayTime(), 1000);
+    },
+
+    undisabledForm () {
+        let button = $(this);
+        
+        let editBlock = button.closest('.profile-editable');
+
+        editBlock.find('input').prop('disabled', false);
+        editBlock.find('textarea').prop('disabled', false);
+        editBlock.find('select').prop('disabled', false);
+        editBlock.find('button').prop('disabled', false);
+
+        let resetButton = document.createElement('button');
+        $(resetButton).addClass('btn');
+        $(resetButton).addClass('btn-danger');
+        $(resetButton).attr('id', 'resetProfile');
+        $(resetButton).text('Reset changes');
+
+        editBlock.append(resetButton);
+
+        let saveButton = document.createElement('button');
+        $(saveButton).addClass('btn');
+        $(saveButton).addClass('btn-success');
+        $(saveButton).attr('id', 'saveProfile');
+        $(saveButton).text('Save');
+
+        editBlock.append(saveButton);
+    },
+
+    resetChanges() {
+        let button = $(this);
+
+        console.log('В разработке...');
+
     }
 
 }
